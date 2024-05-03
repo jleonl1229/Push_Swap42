@@ -6,35 +6,41 @@
 #    By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 16:54:58 by jleon-la          #+#    #+#              #
-#    Updated: 2024/04/14 17:01:29 by jleon-la         ###   ########.fr        #
+#    Updated: 2024/04/29 17:49:18 by jleon-la         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
-LIBFT = utils/libft.a
-INCLUDES = -I include
-SRCS = 
-OBJS = $(SRCS:.c=.o)
+CC = cc
+LIBFT_LIB = src/libft/
+LIBFT_FLAGS = -L src/libft/ -lft
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+RM		= rm -f
 
-all: $(NAME)
+SRC =	src/main.c \
+		src/data.c \
+		src/sort.c \
+		src/utils.c \
+		src/moves.c \
+
+OBJS = $(SRC:%.c=%.o)
+
+all:	$(NAME)
+
+.c.o:
+		$(CC) -I includes/. $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(MAKE) -C utils/libft
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
-
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+		@make -C $(LIBFT_LIB)
+		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_FLAGS) -o $(NAME)
 
 clean:
-	$(MAKE) -C utils/libft clean
-		rm -f $(OBJS)
+		$(RM) */*.o
 
-fclean: clean
-	$(MAKE) -C utils/libft fclean
-		rm -f $(NAME)
+fclean:	clean
+		$(RM) $(NAME)
+		@make -C $(LIBFT_LIB) fclean
 
-re: fclean all
+re:		fclean all
 
-.PHONY: all clean fclean re
+.PHONY : all clean fclean re
