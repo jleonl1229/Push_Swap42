@@ -20,7 +20,7 @@ RM		= rm -f
 SRC =	src/main.c \
 		src/data.c \
 		src/sort.c \
-		src/utils.c \
+		src/aux.c \
 		src/moves.c \
 
 OBJS = $(SRC:%.c=%.o)

@@ -12,11 +12,19 @@
 
 #include "push_swap.h"
 
+static void hollow(void *node)
+{
+	if (node)
+		return ;
+	else
+		return ;
+}
+
 int	main(int ac, char **av)
 {
-	int		number;
-	t_list	*stack_a;
-	t_list	*stack_b;
+	long		number;
+	t_list		*stack_a;
+	t_list		*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -26,7 +34,7 @@ int	main(int ac, char **av)
 		get_numbers(&stack_a, &av[1]);
 	else
 		return (1);
-	return (0);
+	return (ft_lstclear(&stack_a, hollow), 0);
 }
 
 // 4 5 6 7 0 1 2 3 4 5 6

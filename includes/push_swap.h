@@ -19,4 +19,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+long	ft_atol(const char *str);
+
 #endif
