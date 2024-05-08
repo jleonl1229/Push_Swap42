@@ -19,6 +19,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-long	ft_atol(const char *str);
+typedef struct numnode
+{
+	long	num;
+	long	index;
+	numnode	*next;
+	numnode	*prev;
+}		numnode;
+
+long		ft_atol(const char *str);
+static void	hollow(void *node);
 
 #endif
