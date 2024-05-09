@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+void	printnums(numnode **stack_a)
+{
+	while (stack_a != (void *)0)
+	{
+		ft_printf("Num of the node: %lu\n", stack_a->num);i
+		stack_a = stack_a->next;
+	}
+}
+
 void	chargelongs(numnode **stack_a, long *count)
 {
 	long	i;
@@ -19,14 +28,14 @@ void	chargelongs(numnode **stack_a, long *count)
 	i = 0;
 	while (count[i])
 	{
-		stack_a = malloc(sizeof(numnode) * 1);
-		stack_a->num = count[i];
-		stack_a->next;
+		*stack_a = malloc(sizeof(numnode) * 1);
+		*stack_a->num = count[i];
+		*stack_a->next = (void *)0;
 		i++;
 	}
 }
 
-void	getnumbers(numnode **stack_a, char **numarr)
+void	get_numbers(numnode **stack_a, char **numarr)
 {
 	long	i;
 	long	ii;
@@ -44,8 +53,10 @@ void	getnumbers(numnode **stack_a, char **numarr)
 	}
 	count[ii] = (void *)0;
 	if (!count)
-		return (free(count), (void *)0);
-	/* return (count); */
+	{
+		free(count);
+		return ;
+	}
 	chargelongs(&stack_a, count);
 }
 
@@ -60,16 +71,17 @@ static void	hollow(void *node)
 int	main(int ac, char **av)
 {
 	numnode		*stack_a;
-	numnode		*stack_b;
+	/* numnode		*stack_b; */
 
 	stack_a = (void *)0;
-	stack_b = (void *)0;
+	/* stack_b = (void *)0; */
 	if (ac == 2)
 		get_numbers(&stack_a, ft_split(av[1], ' '));
 	else if (ac > 2)
 		get_numbers(&stack_a, &av[1]);
 	else
 		return (1);
+	printnums(&stack_a);
 	return (ft_lstclear(&stack_a, hollow), 0);
 }
 

@@ -29,7 +29,8 @@ typedef struct numnode
 
 long		ft_atol(const char *str);
 static void	hollow(void *node);
-void		getnumbers(numnode **stack_a, char **numarr);
+void		get_numbers(numnode **stack_a, char **numarr);
 void		chargelongs(numnode **stack_a, long *count);
+void		printnums(numnode **stack_a);
 
 #endif
