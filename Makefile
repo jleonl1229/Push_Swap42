@@ -17,11 +17,11 @@ LIBFT_FLAGS = -L src/libft/ -lft
 CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 RM		= rm -f
 
-SRC =	src/main.c \
-		src/data.c \
-		src/sort.c \
+SRC =		src/main.c \
 		src/aux.c \
-		src/moves.c \
+		src/movements.c \
+		# src/data.c \
+		# src/sort.c \
 
 OBJS = $(SRC:%.c=%.o)
 
