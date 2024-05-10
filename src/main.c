@@ -6,17 +6,17 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/04/29 18:47:12 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:32:16 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	printnums(numnode **stack_a)
+void	printnums(numnode *stack_a)
 {
 	while (stack_a != (void *)0)
 	{
-		ft_printf("Num of the node: %lu\n", stack_a->num);i
+		ft_printf("Num of the node: %ld\n", stack_a->num);
 		stack_a = stack_a->next;
 	}
 }
@@ -24,8 +24,10 @@ void	printnums(numnode **stack_a)
 void	chargelongs(numnode **stack_a, long *count)
 {
 	long	i;
+	numnode	*tmp;
 
 	i = 0;
+	tmp = stack_a;
 	while (count[i])
 	{
 		*stack_a = malloc(sizeof(numnode) * 1);
@@ -33,6 +35,7 @@ void	chargelongs(numnode **stack_a, long *count)
 		*stack_a->next = (void *)0;
 		i++;
 	}
+	stack_a = tmp;
 }
 
 void	get_numbers(numnode **stack_a, char **numarr)
@@ -81,7 +84,7 @@ int	main(int ac, char **av)
 		get_numbers(&stack_a, &av[1]);
 	else
 		return (1);
-	printnums(&stack_a);
+	printnums(stack_a);
 	return (ft_lstclear(&stack_a, hollow), 0);
 }
 

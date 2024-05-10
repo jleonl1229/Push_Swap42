@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/04/29 17:49:56 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:04:16 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 
 typedef struct numnode
 {
-	long	num;
-	long	index;
-	numnode	*next;
-	numnode	*prev;
-}		numnode;
+	long		num;
+	long		index;
+	struct	numnode	*next;
+	struct	numnode	*prev;
+}			numnode;
 
 long		ft_atol(const char *str);
 static void	hollow(void *node);
