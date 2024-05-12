@@ -6,11 +6,38 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/10 13:32:16 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:48:48 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void	cleaner(numnode **lst)
+{
+	numnode	*check;
+
+	if (lst != (void *)0)
+	{
+		while (*lst != (void *)0)
+		{
+			check = (*lst)->next;
+			free(lst);
+			*lst = check;
+		}
+	}
+}
+
+void freeme(char **numarr)
+{
+	long	i;
+
+	i = 0;
+	while (numarr[i] != (void *)0)
+	{
+		free(numarr[i]);
+		i++;
+	}
+	free(numarr);
+}
 
 void	printnums(numnode *stack_a)
 {
@@ -27,7 +54,7 @@ void	chargelongs(numnode **stack_a, long *count)
 	numnode	*tmp;
 
 	i = 0;
-	tmp = stack_a;
+	tmp = *stack_a;
 	while (count[i])
 	{
 		*stack_a = malloc(sizeof(numnode) * 1);
@@ -35,7 +62,7 @@ void	chargelongs(numnode **stack_a, long *count)
 		*stack_a->next = (void *)0;
 		i++;
 	}
-	stack_a = tmp;
+	*stack_a = tmp;
 }
 
 void	get_numbers(numnode **stack_a, char **numarr)
@@ -45,30 +72,20 @@ void	get_numbers(numnode **stack_a, char **numarr)
 	long	*count;
 
 	i = 0;
+	ii = 0;
 	while (numarr[i] != (void *)0)
 		i++;
-	count = (long *)malloc(sizeof(long) * i + 1);
-	ii = 0;
+	count = (long *)malloc(sizeof(long) * (i + 1));
+	if (!count)
+		return ;
 	while (numarr[ii] != (void *)0)
 	{
 		count[ii] = ft_atol(numarr[ii]);
 		ii++;
 	}
-	count[ii] = (void *)0;
-	if (!count)
-	{
-		free(count);
-		return ;
-	}
-	chargelongs(&stack_a, count);
-}
-
-static void	hollow(void *node)
-{
-	if (node)
-		return ;
-	else
-		return ;
+	/* count[ii] = -1; */
+	freeme(numarr);
+	chargelongs(stack_a, count);
 }
 
 int	main(int ac, char **av)
@@ -85,8 +102,16 @@ int	main(int ac, char **av)
 	else
 		return (1);
 	printnums(stack_a);
-	return (ft_lstclear(&stack_a, hollow), 0);
+	return (cleaner(&stack_a), 0);
 }
+
+// static void	hollow(void *node)
+// {
+// 	if (node)
+// 		return ;
+// 	else
+// 		return ;
+// }
 
 // 4 5 6 7 0 1 2 3 4 5 6
 
