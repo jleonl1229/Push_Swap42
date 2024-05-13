@@ -41,10 +41,13 @@ void freeme(char **numarr)
 
 void	printnums(numnode *stack_a)
 {
-	while (stack_a != (void *)0)
+	if (stack_a != (void *)0)
 	{
-		ft_printf("Num of the node: %ld\n", stack_a->num);
-		stack_a = stack_a->next;
+		while (stack_a != (void *)0)
+		{
+			ft_printf("Num of the node: %ld\n", stack_a->num);
+			stack_a = stack_a->next;
+		}
 	}
 }
 
@@ -73,6 +76,8 @@ void	get_numbers(numnode **stack_a, char **numarr)
 
 	i = 0;
 	ii = 0;
+	if (!numarr[i] || !stack_a)
+		return ;
 	while (numarr[i] != (void *)0)
 		i++;
 	count = (long *)malloc(sizeof(long) * (i + 1));
