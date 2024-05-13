@@ -6,11 +6,12 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/12 18:48:48 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:35:18 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 void	cleaner(numnode **lst)
 {
 	numnode	*check;
@@ -61,8 +62,8 @@ void	chargelongs(numnode **stack_a, long *count)
 	while (count[i])
 	{
 		*stack_a = malloc(sizeof(numnode) * 1);
-		*stack_a->num = count[i];
-		*stack_a->next = (void *)0;
+		(*stack_a)->num = count[i];
+		(*stack_a)->next = (void *)0;
 		i++;
 	}
 	*stack_a = tmp;
@@ -80,15 +81,14 @@ void	get_numbers(numnode **stack_a, char **numarr)
 		return ;
 	while (numarr[i] != (void *)0)
 		i++;
-	count = (long *)malloc(sizeof(long) * (i + 1));
+	count = (long *)malloc(sizeof(long) * i);
 	if (!count)
 		return ;
-	while (numarr[ii] != (void *)0)
+	while (ii < i)
 	{
 		count[ii] = ft_atol(numarr[ii]);
 		ii++;
 	}
-	/* count[ii] = -1; */
 	freeme(numarr);
 	chargelongs(stack_a, count);
 }
