@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/13 17:57:44 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:07:37 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct numnode
 }			numnode;
 
 long		ft_atol(const char *str);
-void		freeme(char **arr);
+// void		freeme(char **arr);
 void		cleaner(numnode **lst);
 void		get_numbers(numnode **stack_a, char **numarr);
 void		chargelongs(numnode **stack_a, long *count);

@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/13 18:39:46 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:41:56 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ void	cleaner(numnode **lst)
 	}
 }
 
-void freeme(char **numarr)
-{
-	long	i;
+// void freeme(long **count)
+// {
+// 	long	i;
 
-	i = 0;
-	while (numarr[i] != (void *)0)
-	{
-		free(numarr[i]);
-		i++;
-	}
-	free(numarr);
-}
+// 	i = 0;
+// 	while (count[i] != (void *)0)
+// 	{
+// 		free(count[i]);
+// 		i++;
+// 	}
+// 	free(count);
+// }
 
 void	printnums(numnode *stack_a)
 {
@@ -46,7 +46,7 @@ void	printnums(numnode *stack_a)
 	{
 		while (stack_a != (void *)0)
 		{
-			ft_printf("Num of the node: %ld\n", stack_a->num);
+			ft_printf("Num of the node: %l\n", stack_a->num);
 			stack_a = stack_a->next;
 		}
 	}
@@ -74,6 +74,8 @@ void	chargelongs(numnode **stack_a, long *count)
 		last = new;
 		i++;
 	}
+	// freeme(count);
+	free(count);
 }
 
 void	get_numbers(numnode **stack_a, char **numarr)
@@ -96,7 +98,6 @@ void	get_numbers(numnode **stack_a, char **numarr)
 		count[ii] = ft_atol(numarr[ii]);
 		ii++;
 	}
-	freeme(numarr);
 	chargelongs(stack_a, count);
 }
 

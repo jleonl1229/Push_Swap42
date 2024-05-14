@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:56:45 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/04/03 12:06:30 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:41:42 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@ int	ft_address(unsigned long long int address, char *base);
 int	ft_getint(int num, char *base);
 int	ft_getunsigned(unsigned int num, char *base);
 int	ft_gethex(unsigned int num, char *base);
+
+int	ft_getlong(long num, char *base)
+{
+	long	i;
+
+	i = 0;
+	if (num == -2147483648)
+		return (write(1, "-2147483648", 11));
+	if (num < 0)
+	{
+		num = num * (-1);
+		write(1, "-", 1);
+		i++;
+	}
+	if (num >= 10)
+		i += ft_getint(num / 10, base);
+	return (write(1, &base[num % 10], 1) + i);
+}
+
 
 int	formats(char c, va_list args, int total)
 {
@@ -41,6 +60,8 @@ int	formats(char c, va_list args, int total)
 		"0123456789ABCDEF");
 	else if (c == 'i' || c == 'd')
 		total += ft_getint(va_arg(args, int), "0123456789");
+	else if (c == 'l')
+		total += ft_getlong(va_arg(args, long), "0123456789");
 	else if (c == 'u')
 		total += ft_getunsigned(va_arg(args, unsigned), "0123456789");
 	else if (c == '%')
