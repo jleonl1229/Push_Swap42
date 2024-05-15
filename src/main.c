@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/15 11:20:53 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:45:21 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,27 @@ void freeme(char **spliter)
 	free(spliter);
 }
 
+long	repeated(numnode *stack_a)
+{
+	numnode	*tmp;
+	long	i;
+
+	tmp = stack_a;
+	while (stack_a)
+	{
+		i = stack_a->num;
+		tmp = stack_a->next;
+		while (tmp)
+		{
+			if (tmp->num == i)
+				return (0);
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	numnode		*stack_a;
@@ -120,7 +141,10 @@ int	main(int ac, char **av)
 		get_numbers(&stack_a, &av[1]);
 	else
 		return (1);
-	printnums(stack_a);
+	if (repeated(stack_a) == 1)
+		printnums(stack_a);
+	else
+		return (cleaner(&stack_a), 1);
 	return (cleaner(&stack_a), 0);
 }
 
