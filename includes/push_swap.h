@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/15 12:22:49 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:31:35 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void		freeme(char **spliter);
 void		cleaner(numnode **lst);
 void		get_numbers(numnode **stack_a, char **numarr);
 void		chargelongs(numnode **stack_a, long *count, long size);
-void		printnums(numnode *stack_a);
+// void		printnums(numnode *stack_a);
+long		countelements(numnode *stack_a);
+void		decision(numnode **stack_a);
 long		repeated(numnode *stack_a);
 
 #endif

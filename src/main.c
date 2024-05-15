@@ -6,11 +6,55 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/15 14:42:32 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:50:35 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	printnums(numnode *stack_a)
+{
+	if (stack_a != (void *)0)
+	{
+		while (stack_a != (void *)0)
+		{
+			ft_printf("Num of the node: %l\n", stack_a->num);
+			stack_a = stack_a->next;
+		}
+	}
+}
+
+long countelements(numnode *stack_a)
+{
+	long	i;
+	numnode	*tmp;
+
+	i = 0;
+	tmp = stack_a;
+	while (stack_a)
+	{
+		i++;
+		stack_a = stack_a->next;
+	}
+	stack_a = tmp;
+	return (i);
+}
+
+void	decision(numnode **stack_a)
+{
+	if (countelements(*stack_a) <= 5)
+	{
+		// hardcodeme();
+		ft_printf("Less or eqal than 5\n");
+		printnums(*stack_a);
+	}
+	else
+	{
+	// 	ft_radix();
+		ft_printf("More than 5\n");
+		printnums(*stack_a);
+	}
+}
 
 void	cleaner(numnode **lst)
 {
@@ -23,18 +67,6 @@ void	cleaner(numnode **lst)
 			check = (*lst)->next;
 			free(*lst);
 			*lst = check;
-		}
-	}
-}
-
-void	printnums(numnode *stack_a)
-{
-	if (stack_a != (void *)0)
-	{
-		while (stack_a != (void *)0)
-		{
-			ft_printf("Num of the node: %l\n", stack_a->num);
-			stack_a = stack_a->next;
 		}
 	}
 }
@@ -163,19 +195,13 @@ int	main(int ac, char **av)
 	else
 		return (1);
 	if (repeated(stack_a) == 1)
-		printnums(stack_a);
+		decision(&stack_a);
 	else
 		return (cleaner(&stack_a), 1);
 	return (cleaner(&stack_a), 0);
 }
 
-// static void	hollow(void *node)
-// {
-// 	if (node)
-// 		return ;
-// 	else
-// 		return ;
-// }
+// printnums(stack_a);
 
 // 4 5 6 7 0 1 2 3 4 5 6
 
