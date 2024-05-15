@@ -6,7 +6,7 @@
 #    By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 16:54:58 by jleon-la          #+#    #+#              #
-#    Updated: 2024/05/14 15:28:21 by jleon-la         ###   ########.fr        #
+#    Updated: 2024/05/15 11:01:51 by jleon-la         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME = push_swap
 CC = cc
 LIBFT_LIB = src/libft/
 LIBFT_FLAGS = -L src/libft/ -lft
-CFLAGS = -Wall -Wextra -Werror -g #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -g3 -fsanitize=address
 RM		= rm -f
 
-SRC =	src/main.c \
+SRC =		src/main.c \
 		src/aux.c \
 		src/movements.c \
 		# src/data.c \

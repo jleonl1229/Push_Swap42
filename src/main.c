@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/14 15:41:56 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:20:53 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,6 @@ void	cleaner(numnode **lst)
 	}
 }
 
-// void freeme(long **count)
-// {
-// 	long	i;
-
-// 	i = 0;
-// 	while (count[i] != (void *)0)
-// 	{
-// 		free(count[i]);
-// 		i++;
-// 	}
-// 	free(count);
-// }
-
 void	printnums(numnode *stack_a)
 {
 	if (stack_a != (void *)0)
@@ -52,7 +39,7 @@ void	printnums(numnode *stack_a)
 	}
 }
 
-void	chargelongs(numnode **stack_a, long *count)
+void	chargelongs(numnode **stack_a, long *count, long size)
 {
 	long	i;
 	numnode	*last;
@@ -60,7 +47,7 @@ void	chargelongs(numnode **stack_a, long *count)
 
 	i = 0;
 	last = (void *)0;
-	while (count[i])
+	while (i < size)
 	{
 		new = malloc(sizeof(numnode) * 1);
 		if (!new)
@@ -74,7 +61,6 @@ void	chargelongs(numnode **stack_a, long *count)
 		last = new;
 		i++;
 	}
-	// freeme(count);
 	free(count);
 }
 
@@ -98,59 +84,38 @@ void	get_numbers(numnode **stack_a, char **numarr)
 		count[ii] = ft_atol(numarr[ii]);
 		ii++;
 	}
-	chargelongs(stack_a, count);
+	chargelongs(stack_a, count, i);
 }
 
-// void	chargelongs(numnode **stack_a, long *count)
-// {
-// 	long	i;
-// 	numnode	*tmp;
+void freeme(char **spliter)
+{
+	long	i;
 
-// 	i = 0;
-// 	tmp = *stack_a;
-// 	while (count[i])
-// 	{
-// 		*stack_a = malloc(sizeof(numnode) * 1);
-// 		(*stack_a)->num = count[i];
-// 		(*stack_a)->next = (void *)0;
-// 		i++;
-// 	}
-// 	*stack_a = tmp;
-// }
-
-// void	get_numbers(numnode **stack_a, char **numarr)
-// {
-// 	long	i;
-// 	long	ii;
-// 	long	*count;
-
-// 	i = 0;
-// 	ii = 0;
-// 	if (!numarr[i] || !stack_a)
-// 		return ;
-// 	while (numarr[i] != (void *)0)
-// 		i++;
-// 	count = (long *)malloc(sizeof(long) * i);
-// 	if (!count)
-// 		return ;
-// 	while (ii < i)
-// 	{
-// 		count[ii] = ft_atol(numarr[ii]);
-// 		ii++;
-// 	}
-// 	freeme(numarr);
-// 	chargelongs(stack_a, count);
-// }
+	i = 0;
+	if (!spliter)
+		return ;
+	while (spliter[i] != (void *)0)
+	{
+		free(spliter[i]);
+		i++;
+	}
+	free(spliter);
+}
 
 int	main(int ac, char **av)
 {
 	numnode		*stack_a;
 	/* numnode		*stack_b; */
+	char		**spliter;
 
 	stack_a = (void *)0;
 	/* stack_b = (void *)0; */
 	if (ac == 2)
-		get_numbers(&stack_a, ft_split(av[1], ' '));	
+	{
+		spliter = ft_split(av[1], ' ');
+		get_numbers(&stack_a, spliter);
+		freeme(spliter);
+	}
 	else if (ac > 2)
 		get_numbers(&stack_a, &av[1]);
 	else

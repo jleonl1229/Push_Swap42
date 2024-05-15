@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:56:45 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/14 15:41:42 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:03:14 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	ft_getlong(long num, char *base)
 	long	i;
 
 	i = 0;
-	if (num == -2147483648)
-		return (write(1, "-2147483648", 11));
 	if (num < 0)
 	{
 		num = num * (-1);
@@ -34,7 +32,7 @@ int	ft_getlong(long num, char *base)
 		i++;
 	}
 	if (num >= 10)
-		i += ft_getint(num / 10, base);
+		i += ft_getlong(num / 10, base);
 	return (write(1, &base[num % 10], 1) + i);
 }
 
