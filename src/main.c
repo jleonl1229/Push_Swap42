@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/15 12:45:21 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:42:32 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,27 @@ void	chargelongs(numnode **stack_a, long *count, long size)
 	free(count);
 }
 
+long	ft_isnum(char **numarr)
+{
+	long	i;
+	long	ii;
+
+	i = 0;
+	ii = 0;
+	while (numarr[i])
+	{
+		ii = 0;
+		while (numarr[i][ii])
+		{
+			if (numarr[i][ii] < '0' || numarr[i][ii] > '9')
+				return (0);
+			ii++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 void	get_numbers(numnode **stack_a, char **numarr)
 {
 	long	i;
@@ -72,7 +93,7 @@ void	get_numbers(numnode **stack_a, char **numarr)
 
 	i = 0;
 	ii = 0;
-	if (!numarr[i] || !stack_a)
+	if (!numarr[i] || !stack_a || ft_isnum(numarr) == 0)
 		return ;
 	while (numarr[i] != (void *)0)
 		i++;
