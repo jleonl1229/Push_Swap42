@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:04:22 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/12 18:22:05 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:12:21 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 typedef struct s_list
 {
-	int			index;
-	void		*content;
+	int				index;
+	void			*content;
 	struct s_list	*next;
 }			t_list;
 

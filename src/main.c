@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/16 10:46:57 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:04:36 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	printnums(numnode *stack_a)
 		{
 			ft_printf("Num of the node: %l\n", stack_a->num);
 			stack_a = stack_a->next;
-		}
+		}	
 	}
 }
 
@@ -109,7 +109,7 @@ long	ft_isnum(char **numarr)
 		while (numarr[i][ii])
 		{
 			if ((numarr[i][ii] < '0' || numarr[i][ii] > '9') && 
-				numarr[i][ii] != '-')
+				numarr[i][ii] != '-' && numarr[i][ii] != '+')
 				return (0);
 			ii++;
 		}

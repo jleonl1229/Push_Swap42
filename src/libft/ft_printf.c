@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:56:45 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/14 16:03:14 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:07:57 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(void);
 int	ft_getchar(char o);
 int	ft_getstr(char *o);
 int	ft_address(unsigned long long int address, char *base);
-int	ft_getint(int num, char *base);
 int	ft_getunsigned(unsigned int num, char *base);
 int	ft_gethex(unsigned int num, char *base);
 
@@ -35,7 +34,6 @@ int	ft_getlong(long num, char *base)
 		i += ft_getlong(num / 10, base);
 	return (write(1, &base[num % 10], 1) + i);
 }
-
 
 int	formats(char c, va_list args, int total)
 {
@@ -56,8 +54,6 @@ int	formats(char c, va_list args, int total)
 	else if (c == 'X')
 		total += ft_gethex(va_arg(args, unsigned int), \
 		"0123456789ABCDEF");
-	else if (c == 'i' || c == 'd')
-		total += ft_getint(va_arg(args, int), "0123456789");
 	else if (c == 'l')
 		total += ft_getlong(va_arg(args, long), "0123456789");
 	else if (c == 'u')
