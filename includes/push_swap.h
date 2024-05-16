@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/15 16:31:35 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:06:14 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void		chargelongs(numnode **stack_a, long *count, long size);
 long		countelements(numnode *stack_a);
 void		decision(numnode **stack_a);
 long		repeated(numnode *stack_a);
+void		sa(numnode **stack_a);
 
 #endif
