@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/15 17:50:35 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:46:57 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ long	ft_isnum(char **numarr)
 		ii = 0;
 		while (numarr[i][ii])
 		{
-			if (numarr[i][ii] < '0' || numarr[i][ii] > '9')
+			if ((numarr[i][ii] < '0' || numarr[i][ii] > '9') && 
+				numarr[i][ii] != '-')
 				return (0);
 			ii++;
 		}
