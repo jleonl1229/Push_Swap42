@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/16 16:25:56 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/17 11:16:19 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	printnums(numnode *stack_a)
 	}
 }
 
-long countelements(numnode *stack_a)
+long	countelements(numnode *stack_a)
 {
 	long	i;
 	numnode	*tmp;
@@ -58,21 +58,6 @@ void	decision(numnode **stack_a)
 	}
 }
 
-void	cleaner(numnode **lst)
-{
-	numnode	*check;
-
-	if (lst != (void *)0)
-	{
-		while (*lst != (void *)0)
-		{
-			check = (*lst)->next;
-			free(*lst);
-			*lst = check;
-		}
-	}
-}
-
 void	chargelongs(numnode **stack_a, long *count, long size)
 {
 	long	i;
@@ -98,6 +83,20 @@ void	chargelongs(numnode **stack_a, long *count, long size)
 	free(count);
 }
 
+static long	numcheck(char **num, long *i, long *ii)
+{
+	if (num[*i][*ii] == '-' || num[*i][*ii] == '+' || 
+		(num[*i][*ii] >= '0' && num[*i][*ii] <= '9'))
+	{
+		(*ii)++;
+		while (num[*i][*ii] >= '0' && num[*i][*ii] <= '9')
+			(*ii)++;
+		if (num[*i][*ii] != '\0')
+			return (0);
+	}
+	exit(1);
+}
+
 long	ft_isnum(char **numarr)
 {
 	long	i;
@@ -110,10 +109,8 @@ long	ft_isnum(char **numarr)
 		ii = 0;
 		while (numarr[i][ii])
 		{
-			if ((numarr[i][ii] < '0' || numarr[i][ii] > '9') && 
-				numarr[i][ii] != '-' && numarr[i][ii] != '+')
+			if (numcheck(numarr, &i, &ii) == 0)
 				return (0);
-			ii++;
 		}
 		i++;
 	}
@@ -129,7 +126,7 @@ void	get_numbers(numnode **stack_a, char **numarr)
 	i = 0;
 	ii = 0;
 	if (!numarr[i] || !stack_a || ft_isnum(numarr) == 0)
-		return ;
+		exit(1);
 	while (numarr[i] != (void *)0)
 		i++;
 	count = (long *)malloc(sizeof(long) * i);

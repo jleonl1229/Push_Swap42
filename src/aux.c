@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:50:38 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/16 11:05:00 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:47:51 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,19 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (num * sign);
+}
+
+void	cleaner(numnode **lst)
+{
+	numnode	*check;
+
+	if (lst != (void *)0)
+	{
+		while (*lst != (void *)0)
+		{
+			check = (*lst)->next;
+			free(*lst);
+			*lst = check;
+		}
+	}
 }
