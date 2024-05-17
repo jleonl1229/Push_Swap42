@@ -6,7 +6,7 @@
 #    By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 16:54:58 by jleon-la          #+#    #+#              #
-#    Updated: 2024/05/15 11:01:51 by jleon-la         ###   ########.fr        #
+#    Updated: 2024/05/17 13:31:14 by jleon-la         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ LIBFT_FLAGS = -L src/libft/ -lft
 CFLAGS = -Wall -Wextra -Werror -g -g3 -fsanitize=address
 RM		= rm -f
 
-SRC =		src/main.c \
+SRC =	src/main.c \
 		src/aux.c \
+		src/parameterer.c \
 		src/movements.c \
 		# src/data.c \
 		# src/sort.c \

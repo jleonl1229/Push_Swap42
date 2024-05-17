@@ -5,12 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 15:50:38 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/16 18:47:51 by jleon-la         ###   ########.fr       */
+/*   Created: 2024/05/17 13:22:26 by jleon-la          #+#    #+#             */
+/*   Updated: 2024/05/17 13:33:04 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void freeme(char **spliter)
+{
+	long	i;
+
+	i = 0;
+	if (!spliter)
+		return ;
+	while (spliter[i] != (void *)0)
+	{
+		free(spliter[i]);
+		i++;
+	}
+	free(spliter);
+}
+
+void	printnums(numnode *stack_a)
+{
+	if (stack_a != (void *)0)
+	{
+		while (stack_a != (void *)0)
+		{
+			ft_printf("Num of the node: %l\n", stack_a->num);
+			stack_a = stack_a->next;
+		}	
+	}
+}
+
+void	cleaner(numnode **lst)
+{
+	numnode	*check;
+
+	if (lst != (void *)0)
+	{
+		while (*lst != (void *)0)
+		{
+			check = (*lst)->next;
+			free(*lst);
+			*lst = check;
+		}
+	}
+}
+
+long	countelements(numnode *stack_a)
+{
+	long	i;
+	numnode	*tmp;
+
+	i = 0;
+	tmp = stack_a;
+	while (stack_a)
+	{
+		i++;
+		stack_a = stack_a->next;
+	}
+	stack_a = tmp;
+	return (i);
+}
 
 long	ft_atol(const char *str)
 {
@@ -35,19 +93,4 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (num * sign);
-}
-
-void	cleaner(numnode **lst)
-{
-	numnode	*check;
-
-	if (lst != (void *)0)
-	{
-		while (*lst != (void *)0)
-		{
-			check = (*lst)->next;
-			free(*lst);
-			*lst = check;
-		}
-	}
 }
