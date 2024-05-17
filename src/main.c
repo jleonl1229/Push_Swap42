@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/17 11:16:19 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:20:44 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,19 @@ void	chargelongs(numnode **stack_a, long *count, long size)
 
 static long	numcheck(char **num, long *i, long *ii)
 {
+	while (num[*i][*ii] == ' ' || 
+		(num[*i][*ii] >= 9 && num[*i][*ii] <= 13))
+		(*ii)++;
 	if (num[*i][*ii] == '-' || num[*i][*ii] == '+' || 
 		(num[*i][*ii] >= '0' && num[*i][*ii] <= '9'))
 	{
 		(*ii)++;
 		while (num[*i][*ii] >= '0' && num[*i][*ii] <= '9')
 			(*ii)++;
-		if (num[*i][*ii] != '\0')
-			return (0);
+		if (num[*i][*ii] == '\0')
+			return (1);
 	}
-	exit(1);
+	return (0);
 }
 
 long	ft_isnum(char **numarr)
@@ -109,7 +112,7 @@ long	ft_isnum(char **numarr)
 		ii = 0;
 		while (numarr[i][ii])
 		{
-			if (numcheck(numarr, &i, &ii) == 0)
+			if (numcheck(numarr, &i, &ii) != 1)
 				return (0);
 		}
 		i++;
@@ -126,7 +129,10 @@ void	get_numbers(numnode **stack_a, char **numarr)
 	i = 0;
 	ii = 0;
 	if (!numarr[i] || !stack_a || ft_isnum(numarr) == 0)
+	{
+		ft_printf("Error\n");
 		exit(1);
+	}
 	while (numarr[i] != (void *)0)
 		i++;
 	count = (long *)malloc(sizeof(long) * i);
@@ -193,7 +199,7 @@ int	main(int ac, char **av)
 	else if (ac > 2)
 		get_numbers(&stack_a, &av[1]);
 	else
-		return (1);
+		return (ft_printf("Error\n"), 1);
 	if (repeated(stack_a) == 1)
 		decision(&stack_a);
 	else
