@@ -6,7 +6,7 @@
 #    By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 16:54:58 by jleon-la          #+#    #+#              #
-#    Updated: 2024/05/17 13:31:14 by jleon-la         ###   ########.fr        #
+#    Updated: 2024/05/19 20:07:19 by jleon-la         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 CC = cc
 LIBFT_LIB = src/libft/
 LIBFT_FLAGS = -L src/libft/ -lft
-CFLAGS = -Wall -Wextra -Werror -g -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 RM		= rm -f
 
 SRC =	src/main.c \
@@ -43,5 +43,6 @@ fclean:	clean
 		@make -C $(LIBFT_LIB) fclean
 
 re:		fclean all
+		@make clean
 
 .PHONY : all clean fclean re

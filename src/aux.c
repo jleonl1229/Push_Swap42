@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:22:26 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/17 13:33:04 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:39:57 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ long	countelements(numnode *stack_a)
 	while (stack_a)
 	{
 		i++;
+		if (stack_a->num <= -2147483648 || stack_a->num >= 2147483647)
+		{
+			ft_printf("Error\n");
+			exit(1);
+		}
 		stack_a = stack_a->next;
 	}
 	stack_a = tmp;

@@ -6,11 +6,32 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:50:38 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/17 13:34:02 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/19 20:12:37 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+long	repeated(numnode *stack_a)
+{
+	numnode	*tmp;
+	long	i;
+
+	tmp = stack_a;
+	while (stack_a)
+	{
+		i = stack_a->num;
+		tmp = stack_a->next;
+		while (tmp)
+		{
+			if (tmp->num == i)
+				return (ft_printf("Error\n"), 0);
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
 
 void	chargelongs(numnode **stack_a, long *count, long size)
 {
@@ -98,25 +119,4 @@ void	get_numbers(numnode **stack_a, char **numarr)
 		ii++;
 	}
 	chargelongs(stack_a, count, i);
-}
-
-long	repeated(numnode *stack_a)
-{
-	numnode	*tmp;
-	long	i;
-
-	tmp = stack_a;
-	while (stack_a)
-	{
-		i = stack_a->num;
-		tmp = stack_a->next;
-		while (tmp)
-		{
-			if (tmp->num == i)
-				return (ft_printf("Error\n"), 0);
-			tmp = tmp->next;
-		}
-		stack_a = stack_a->next;
-	}
-	return (1);
 }

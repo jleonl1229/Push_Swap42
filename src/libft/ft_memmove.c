@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:26 by jleon-la          #+#    #+#             */
-/*   Updated: 2023/12/21 15:21:57 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:36:42 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t				i;
 	unsigned char		*destination;
 	unsigned char		*source;
 
 	destination = (unsigned char *)dst;
 	source = (unsigned char *)src;
-	i = 0;
 	if (dst == NULL && src == NULL)
 	{
 		return (NULL);
