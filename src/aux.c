@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:22:26 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/19 19:39:57 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:15:24 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ long	countelements(numnode *stack_a)
 	while (stack_a)
 	{
 		i++;
-		if (stack_a->num <= -2147483648 || stack_a->num >= 2147483647)
+		if (stack_a->num < -2147483648 || stack_a->num > 2147483647)
 		{
 			ft_printf("Error\n");
 			exit(1);
@@ -84,18 +84,15 @@ long	ft_atol(const char *str)
 	i = 0;
 	sign = 1;
 	num = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
 	if ((str[i] == '+') || (str[i] == '-'))
 	{
+		if (str[i + 1] == '\0')
+			ft_printf("Error\n"), exit(1);
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		num = (num * 10) + (str[i] - '0');
-		i++;
-	}
+		num = (num * 10) + (str[i++] - '0');
 	return (num * sign);
 }
