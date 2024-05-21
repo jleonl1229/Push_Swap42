@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/19 20:00:00 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:52:05 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	decision(numnode **stack_a)
 		// hardcodeme();
 		ft_printf("Less or equal than 5 \n");
 		// sa(stack_a);
+		rra(stack_a);
 		printnums(*stack_a);
 	}
 	else
 	{
 		// ft_radix();
 		ft_printf("More than 5\n");
-		// sa(stack_a);
+		sa(stack_a);
 		printnums(*stack_a);
 	}
 }
