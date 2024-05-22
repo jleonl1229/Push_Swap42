@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/21 17:51:59 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:44:21 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		printnums(numnode *stack_a);
 long		countelements(numnode *stack_a);
 void		decision(numnode **stack_a);
 long		repeated(numnode *stack_a);
+long		sorted(numnode **stack_a);
 void		sa(numnode **stack_a);
 void		ra(numnode **stack_a);
 void		rra(numnode **stack_a);
