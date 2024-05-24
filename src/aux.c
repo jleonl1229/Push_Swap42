@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:22:26 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/20 11:15:24 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:49:11 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ void freeme(char **spliter)
 
 void	printnums(numnode *stack_a)
 {
-	if (stack_a != (void *)0)
+	numnode *copy;
+
+    copy = stack_a;
+	if (copy != (void *)0)
 	{
-		while (stack_a != (void *)0)
+		while (copy != (void *)0)
 		{
-			ft_printf("Num of the node: %l\n", stack_a->num);
-			stack_a = stack_a->next;
+			ft_printf("Num of the node: %l\n", copy->num);
+			copy = copy->next;
 		}	
 	}
 }

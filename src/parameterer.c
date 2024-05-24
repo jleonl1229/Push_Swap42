@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:50:38 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/22 12:09:42 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:53:52 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	chargelongs(numnode **stack_a, long *count, long size)
 		if (!new)
 			return ;
 		new->num = count[i];
+		new->index = 0;
 		new->next = (void *)0;
 		if (last == (void *)0)
 			*stack_a = new;
