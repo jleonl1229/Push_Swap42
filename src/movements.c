@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 11:05:27 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/22 12:20:05 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:21:02 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,24 @@ void    sa(numnode **stack_a)
 //     sb(stack_b);
 // }
 
-// void    pa(numnode **stack_a, numnode **stack_b)
-// {
-//     numnode *node;
+void    pa(numnode **stack_a, numnode **stack_b)
+{
+    numnode *node;
 
-//     if (countelements(*stack_b) <= 0)
-//         return ;
-//     node = *stack_b;
-//     node->next = *stack_a;
-//     *stack_a = node;
-// }
+    if (countelements(*stack_b) <= 0)
+        return ;
+    node = *stack_b;
+    node->next = *stack_a;
+    *stack_a = node;
+}
 
-// void    pb(numnode **stack_a, numnode **stack_b)
-// {
-//     numnode *node;
+void    pb(numnode **stack_a, numnode **stack_b)
+{
+    numnode *node;
 
-//     if (countelements(*stack_a) <= 0)
-//         return ;
-//     node = *stack_a;
-//     node->next = *stack_b;
-//     *stack_b = node;
-// }
+    if (countelements(*stack_a) <= 0)
+        return ;
+    node = *stack_a;
+    node->next = *stack_b;
+    *stack_b = node;
+}

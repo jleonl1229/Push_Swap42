@@ -6,19 +6,22 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/24 15:38:53 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:54:42 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	decision(numnode **stack_a)
+void	decision(numnode **stack_a, numnode **stack_b)
 {
+	if (stack_b)
+		ft_printf(":]>)\n");
 	getindex(stack_a);
 	showindex(stack_a);
 	if (countelements(*stack_a) <= 5)
 	{
-		if (sorted(stack_a) == 0)
+		ft_printf(":]>)\n");
+		// if (sorted(stack_a) == 0)
 			// hardcodeme();
 		ft_printf("Less or equal than 5\n");
 		// sa(stack_a);
@@ -27,8 +30,8 @@ void	decision(numnode **stack_a)
 	}
 	else
 	{
-		if (sorted(stack_a) == 0)
-			// ft_radix();
+		// if (sorted(stack_a) == 0)
+			// radix(stack_a, stack_b);
 		ft_printf("More than 5\n");
 		// sa(stack_a);
 		printnums(*stack_a);
@@ -38,11 +41,11 @@ void	decision(numnode **stack_a)
 int	main(int ac, char **av)
 {
 	numnode		*stack_a;
-	/* numnode		*stack_b; */
+	numnode		*stack_b;
 	char		**spliter;
 
 	stack_a = (void *)0;
-	/* stack_b = (void *)0; */
+	stack_b = (void *)0;
 	if (ac == 2)
 	{
 		spliter = ft_split(av[1], ' ');
@@ -54,7 +57,7 @@ int	main(int ac, char **av)
 	else
 		return (ft_printf("Error\n"), 1);
 	if (repeated(stack_a) == 1)
-		decision(&stack_a);
+		decision(&stack_a, &stack_b);
 	else
 		return (cleaner(&stack_a), 1);
 	return (cleaner(&stack_a), 0);
