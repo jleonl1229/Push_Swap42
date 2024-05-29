@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 11:54:42 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:08:04 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ void	decision(numnode **stack_a, numnode **stack_b)
 	if (stack_b)
 		ft_printf(":]>)\n");
 	getindex(stack_a);
-	showindex(stack_a);
+	showindex(stack_a);	
 	if (countelements(*stack_a) <= 5)
 	{
-		ft_printf(":]>)\n");
-		// if (sorted(stack_a) == 0)
-			// hardcodeme();
+		if (sorted(stack_a) == 0)
+			// hardcodeme(stack_a, stack_b);
 		ft_printf("Less or equal than 5\n");
 		// sa(stack_a);
 		// rra(stack_a);
@@ -30,7 +29,7 @@ void	decision(numnode **stack_a, numnode **stack_b)
 	}
 	else
 	{
-		// if (sorted(stack_a) == 0)
+		if (sorted(stack_a) == 0)
 			// radix(stack_a, stack_b);
 		ft_printf("More than 5\n");
 		// sa(stack_a);

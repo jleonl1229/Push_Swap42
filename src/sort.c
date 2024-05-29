@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:05 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 12:17:22 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 12:59:57 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ long    sorted(numnode **stack_a)
     copy = *stack_a;
     if (copy)
     {
-        while (copy)
+        while (copy && copy->next)
         {
             if (copy->index > copy->next->index)
                 return (0);
             copy = copy->next;
         }
     }
-    return (1);
+    return (ft_printf("Already sorted\n"), exit(1), 1);
 }
 
 // void    radix(numnode **stack_a, numnode **stack_b)
