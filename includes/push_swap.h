@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 12:26:36 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:56:17 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ long		countelements(numnode *stack_a);
 void		decision(numnode **stack_a, numnode **stack_b);
 long		repeated(numnode *stack_a);
 long		sorted(numnode **stack_a);
+void		thinkit(numnode *copy, numnode *baton, long *max, long *i);
 void		getindex(numnode **stack_a);
 void    	showindex(numnode **stack_a);
-// void    	radix(numnode **stack_a, numnode **stack_b);
+void    	radix(numnode **stack_a, numnode **stack_b, long bits);
 void		sa(numnode **stack_a);
 void		ra(numnode **stack_a);
 void		rra(numnode **stack_a);

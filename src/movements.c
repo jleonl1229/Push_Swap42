@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 11:05:27 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 10:21:02 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:58:41 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ void    pa(numnode **stack_a, numnode **stack_b)
     if (countelements(*stack_b) <= 0)
         return ;
     node = *stack_b;
+    *stack_b = (*stack_b)->next;
     node->next = *stack_a;
     *stack_a = node;
-}
+}   
 
 void    pb(numnode **stack_a, numnode **stack_b)
 {
@@ -60,6 +61,7 @@ void    pb(numnode **stack_a, numnode **stack_b)
     if (countelements(*stack_a) <= 0)
         return ;
     node = *stack_a;
+    *stack_a = (*stack_a)->next;
     node->next = *stack_b;
     *stack_b = node;
 }

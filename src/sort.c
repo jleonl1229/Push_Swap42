@@ -6,11 +6,26 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:05 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 12:59:57 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:54:42 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void    thinkit(numnode *copy, numnode *baton, long *max, long *i)
+{
+    while (copy)
+    {
+        if (copy->num < *max && copy->index == 0)
+        {
+            *max = copy->num;
+            baton = copy;
+        }
+        copy = copy->next;
+    }
+    if (baton != (void *)0) 
+        baton->index = *i;
+}
 
 void    getindex(numnode **stack_a)
 {
@@ -27,17 +42,7 @@ void    getindex(numnode **stack_a)
         max = LONG_MAX;
         copy = *stack_a;
         baton = (void *)0;
-        while (copy)
-        {
-            if (copy->num < max && copy->index == 0)
-            {
-                max = copy->num;
-                baton = copy;
-            }
-            copy = copy->next;
-        }
-        if (baton != (void *)0)    
-            baton->index = i;
+        thinkit(copy, baton, &max, &i);
         i++;
     }
 }
@@ -74,28 +79,21 @@ long    sorted(numnode **stack_a)
     return (ft_printf("Already sorted\n"), exit(1), 1);
 }
 
-// void    radix(numnode **stack_a, numnode **stack_b)
-// {
-//     long    els;
-//     long    bits;
+void    radix(numnode **stack_a, numnode **stack_b, long bits)
+{
+    long    els;
 
-//     while (1)
-//     {   
-//         els = countelements(*stack_a);
-//         while (els-- > 0)
-//         {
-//             if (sorted(stack_a) == 0)
-//                 return ;
-//             bits = 0;
-//             while (bits++ < 8)
-//             {
-//                 if (((*stack_a)->index >> bits) & 1)
-//                     ra(stack_a);
-//                 else
-//                     pb(stack_a, stack_b);
-//             }
-//         }
-//         while (*stack_b)
-//             pa(stack_a, stack_b);
-//     }
-// }
+    if (sorted(stack_a) == 0)
+            return ;
+    els = countelements(*stack_a);
+    while (--els >= 0)
+    {
+        if (((*stack_a)->index >> bits) & 1)
+            ra(stack_a);
+        else
+            pb(stack_a, stack_b);
+    }
+    while (*stack_b)
+        pa(stack_a, stack_b);
+    radix(stack_a, stack_b, ++bits);
+}

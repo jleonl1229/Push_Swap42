@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:53:55 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 13:08:04 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:06:07 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,30 @@ void	decision(numnode **stack_a, numnode **stack_b)
 		if (sorted(stack_a) == 0)
 			// hardcodeme(stack_a, stack_b);
 		ft_printf("Less or equal than 5\n");
+		ra(stack_a);
+		// pb(stack_a, stack_b);
+		// pa(stack_a, stack_b);
 		// sa(stack_a);
-		// rra(stack_a);
-		printnums(*stack_a);
+		// printnums(*stack_a);
+		showindex(stack_a);
 	}
 	else
 	{
 		if (sorted(stack_a) == 0)
-			// radix(stack_a, stack_b);
+			radix(stack_a, stack_b, 0);
 		ft_printf("More than 5\n");
+		// ra(stack_a);
+		// pb(stack_a, stack_b);
+		// pb(stack_a, stack_b);
+		// pa(stack_a, stack_b);
+		// pa(stack_a, stack_b);
+		// pa(stack_a, stack_b);
 		// sa(stack_a);
+		// ft_printf("A Stack\n");
 		printnums(*stack_a);
+		// ft_printf("B Stack\n");
+		// printnums(*stack_b);
+		showindex(stack_a);
 	}
 }
 
