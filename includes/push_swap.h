@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 18:56:17 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/05/30 10:16:12 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void		ra(numnode **stack_a);
 void		rra(numnode **stack_a);
 void    	pa(numnode **stack_a, numnode **stack_b);
 void    	pb(numnode **stack_a, numnode **stack_b);
+void    	hardcodeme(numnode **stack_a, numnode **stack_b);
 
 #endif

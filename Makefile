@@ -6,7 +6,7 @@
 #    By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 16:54:58 by jleon-la          #+#    #+#              #
-#    Updated: 2024/05/22 12:21:32 by jleon-la         ###   ########.fr        #
+#    Updated: 2024/05/30 10:08:55 by jleon-la         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC =	src/main.c \
 		src/movements2.c \
 		src/movements3.c \
 		src/sort.c \
+		src/tinysort.c
 
 OBJS = $(SRC:%.c=%.o)
 
