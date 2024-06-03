@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:05 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/29 18:54:42 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:21:05 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,21 @@ long    sorted(numnode **stack_a)
     numnode *copy;
 
     copy = *stack_a;
-    if (copy)
+    while (copy && copy->next)
     {
-        while (copy && copy->next)
-        {
-            if (copy->index > copy->next->index)
-                return (0);
-            copy = copy->next;
-        }
+        if (copy->index > copy->next->index)
+            return (0);
+        copy = copy->next;
     }
-    return (ft_printf("Already sorted\n"), exit(1), 1);
+    return (ft_printf("Already sorted\n"), 1);
 }
 
 void    radix(numnode **stack_a, numnode **stack_b, long bits)
 {
     long    els;
 
-    if (sorted(stack_a) == 0)
-            return ;
+    if (sorted(stack_a) == 1)
+        return ;
     els = countelements(*stack_a);
     while (--els >= 0)
     {

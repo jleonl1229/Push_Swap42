@@ -6,11 +6,32 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:08:14 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/31 17:23:32 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:11:22 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// static void foursort(numnode **stack_a)
+// {
+//     // if (stack_a)
+//     //     return ;
+//     long first = (*stack_a)->index;
+//     long second = (*stack_a)->next->index;
+//     long third = (*stack_a)->next->next->index;
+//     long fourth = (*stack_a)->next->next->next->index;
+
+//     if (first > second)
+// 		sa(stack_a);
+//     if (second > third)
+// 		sa(stack_a), ra(stack_a), sa(stack_a), rra(stack_a);
+//     if (third > fourth)
+// 		ra(stack_a), sa(stack_a), rra(stack_a);
+//     if (sorted(stack_a) == 0)
+// 		ra(stack_a), ra(stack_a), sa(stack_a), rra(stack_a), rra(stack_a);
+// 	else
+// 		foursort(stack_a);
+// }
 
 // static long    tiny_sorted(numnode **stack_a)
 // {
@@ -29,18 +50,6 @@
 //     return (1);
 // }
 
-static void fivesort(numnode **stack_a)
-{
-    if (stack_a)
-        return ;
-}
-
-static void foursort(numnode **stack_a)
-{
-    if (stack_a)
-        return ;
-}
-
 static void threesort(numnode **stack_a)
 {
     long	first;
@@ -57,10 +66,33 @@ static void threesort(numnode **stack_a)
 	else if ((first < second) && (first > third) && (second > third))
 		rra(stack_a);
     else
+		sa(stack_a), threesort(stack_a);
+}
+
+static void foursort(numnode **stack_a, numnode **stack_b)
+{
+    // if (stack_a)
+    //     return ;
+    numnode *tmp;
+
+	tmp = *stack_a;
+	while (tmp)
 	{
-		sa(stack_a);
-		threesort(stack_a);
+		if (tmp->next->index == 1)
+		{
+			*stack_b = tmp->next;
+			tmp->next = tmp->next->next;
+		}
+		tmp = tmp->next;
 	}
+	threesort(stack_a);
+	pa(stack_a, stack_b);
+}
+
+static void fivesort(numnode **stack_a)
+{
+    if (stack_a)
+        return ;
 }
 
 void    hardcodeme(numnode **stack_a, numnode **stack_b)
@@ -72,7 +104,7 @@ void    hardcodeme(numnode **stack_a, numnode **stack_b)
     else if (countelements(*stack_a) == 3)
         threesort(stack_a);
     else if (countelements(*stack_a) == 4)
-        foursort(stack_a);
+        foursort(stack_a, stack_b);
     else if (countelements(*stack_a) == 5)
         fivesort(stack_a);
 }
