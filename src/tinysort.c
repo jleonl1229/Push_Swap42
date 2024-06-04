@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:08:14 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/03 17:11:22 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:49:58 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,19 @@ static void threesort(numnode **stack_a)
 
 static void foursort(numnode **stack_a, numnode **stack_b)
 {
-    // if (stack_a)
-    //     return ;
     numnode *tmp;
 
 	tmp = *stack_a;
 	while (tmp)
 	{
-		if (tmp->next->index == 1)
+		if (tmp->next && tmp->next->index == 1)
 		{
 			*stack_b = tmp->next;
 			tmp->next = tmp->next->next;
 		}
 		tmp = tmp->next;
 	}
+	(*stack_b)->next = (void *)0;
 	threesort(stack_a);
 	pa(stack_a, stack_b);
 }
