@@ -6,13 +6,13 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:12:05 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/03 16:21:05 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:48:19 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    thinkit(numnode *copy, numnode *baton, long *max, long *i)
+void    thinkit(t_nnode *copy, t_nnode *baton, long *max, long *i)
 {
     while (copy)
     {
@@ -27,13 +27,13 @@ void    thinkit(numnode *copy, numnode *baton, long *max, long *i)
         baton->index = *i;
 }
 
-void    getindex(numnode **stack_a)
+void    getindex(t_nnode **stack_a)
 {
     long    els;
     long    i;
     long    max;
-    numnode *copy;
-    numnode *baton;
+    t_nnode *copy;
+    t_nnode *baton;
 
     els = countelements(*stack_a);
     i = 1;
@@ -47,9 +47,9 @@ void    getindex(numnode **stack_a)
     }
 }
 
-void    showindex(numnode **stack_a)
+void    showindex(t_nnode **stack_a)
 {
-    numnode *copy;
+    t_nnode *copy;
 
     copy = *stack_a;
     if (*stack_a != (void *)0)
@@ -62,9 +62,9 @@ void    showindex(numnode **stack_a)
     }
 }
 
-long    sorted(numnode **stack_a)
+long    sorted(t_nnode **stack_a)
 {
-    numnode *copy;
+    t_nnode *copy;
 
     copy = *stack_a;
     while (copy && copy->next)
@@ -73,10 +73,10 @@ long    sorted(numnode **stack_a)
             return (0);
         copy = copy->next;
     }
-    return (ft_printf("Already sorted\n"), 1);
+    return (1);
 }
 
-void    radix(numnode **stack_a, numnode **stack_b, long bits)
+void    radix(t_nnode **stack_a, t_nnode **stack_b, long bits)
 {
     long    els;
 

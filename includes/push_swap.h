@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/30 10:16:12 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:47:10 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,33 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct numnode
+typedef struct s_nnode
 {
 	long			num;
 	long			index;
-	struct	numnode	*next;
-	struct	numnode	*prev;
-}			numnode;
+	struct	s_nnode	*next;
+	struct	s_nnode	*prev;
+}			t_nnode;
 
 long		ft_atol(const char *str);
 void		freeme(char **spliter);
-void		cleaner(numnode **lst);
-void		get_numbers(numnode **stack_a, char **numarr);
-void		chargelongs(numnode **stack_a, long *count, long size);
-void		printnums(numnode *stack_a);
-long		countelements(numnode *stack_a);
-void		decision(numnode **stack_a, numnode **stack_b);
-long		repeated(numnode *stack_a);
-long		sorted(numnode **stack_a);
-void		thinkit(numnode *copy, numnode *baton, long *max, long *i);
-void		getindex(numnode **stack_a);
-void    	showindex(numnode **stack_a);
-void    	radix(numnode **stack_a, numnode **stack_b, long bits);
-void		sa(numnode **stack_a);
-void		ra(numnode **stack_a);
-void		rra(numnode **stack_a);
-void    	pa(numnode **stack_a, numnode **stack_b);
-void    	pb(numnode **stack_a, numnode **stack_b);
-void    	hardcodeme(numnode **stack_a, numnode **stack_b);
+void		cleaner(t_nnode **lst);
+void		get_numbers(t_nnode **stack_a, char **numarr);
+void		chargelongs(t_nnode **stack_a, long *count, long size);
+void		printnums(t_nnode *stack_a);
+long		countelements(t_nnode *stack_a);
+void		decision(t_nnode **stack_a, t_nnode **stack_b);
+long		repeated(t_nnode *stack_a);
+long		sorted(t_nnode **stack_a);
+void		thinkit(t_nnode *copy, t_nnode *baton, long *max, long *i);
+void		getindex(t_nnode **stack_a);
+void    	showindex(t_nnode **stack_a);
+void    	radix(t_nnode **stack_a, t_nnode **stack_b, long bits);
+void		sa(t_nnode **stack_a);
+void		ra(t_nnode **stack_a);
+void		rra(t_nnode **stack_a);
+void    	pa(t_nnode **stack_a, t_nnode **stack_b);
+void    	pb(t_nnode **stack_a, t_nnode **stack_b);
+void    	hardcodeme(t_nnode **stack_a, t_nnode **stack_b);
 
 #endif

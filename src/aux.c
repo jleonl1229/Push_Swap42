@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:22:26 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/03 16:24:12 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:46:39 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void freeme(char **spliter)
 	free(spliter);
 }
 
-void	printnums(numnode *stack_a)
+void	printnums(t_nnode *stack_a)
 {
-	numnode *copy;
+	t_nnode *copy;
 
     copy = stack_a;
 	if (copy != (void *)0)
@@ -42,9 +42,9 @@ void	printnums(numnode *stack_a)
 	}
 }
 
-void	cleaner(numnode **lst)
+void	cleaner(t_nnode **lst)
 {
-	numnode	*check;
+	t_nnode	*check;
 
 	if (lst != (void *)0)
 	{
@@ -57,10 +57,10 @@ void	cleaner(numnode **lst)
 	}
 }
 
-long	countelements(numnode *stack_a)
+long	countelements(t_nnode *stack_a)
 {
 	long	i;
-	numnode	*tmp;
+	t_nnode	*tmp;
 
 	i = 0;
 	tmp = stack_a;

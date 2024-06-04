@@ -6,15 +6,15 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:50:38 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/05/23 14:53:52 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:46:39 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	repeated(numnode *stack_a)
+long	repeated(t_nnode *stack_a)
 {
-	numnode	*tmp;
+	t_nnode	*tmp;
 	long	i;
 
 	tmp = stack_a;
@@ -33,17 +33,17 @@ long	repeated(numnode *stack_a)
 	return (1);
 }
 
-void	chargelongs(numnode **stack_a, long *count, long size)
+void	chargelongs(t_nnode **stack_a, long *count, long size)
 {
 	long	i;
-	numnode	*last;
-	numnode	*new;
+	t_nnode	*last;
+	t_nnode	*new;
 
 	i = 0;
 	last = (void *)0;
 	while (i < size)
 	{
-		new = malloc(sizeof(numnode) * 1);
+		new = malloc(sizeof(t_nnode) * 1);
 		if (!new)
 			return ;
 		new->num = count[i];
@@ -96,7 +96,7 @@ long	ft_isnum(char **numarr)
 	return (1);
 }
 
-void	get_numbers(numnode **stack_a, char **numarr)
+void	get_numbers(t_nnode **stack_a, char **numarr)
 {
 	long	i;
 	long	ii;
