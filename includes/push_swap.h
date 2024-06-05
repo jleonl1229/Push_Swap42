@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:15:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/04 14:47:10 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:35:41 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_nnode
 {
 	long			num;
 	long			index;
-	struct	s_nnode	*next;
-	struct	s_nnode	*prev;
+	struct s_nnode	*next;
+	struct s_nnode	*prev;
 }			t_nnode;
 
 long		ft_atol(const char *str);
@@ -40,13 +40,13 @@ long		repeated(t_nnode *stack_a);
 long		sorted(t_nnode **stack_a);
 void		thinkit(t_nnode *copy, t_nnode *baton, long *max, long *i);
 void		getindex(t_nnode **stack_a);
-void    	showindex(t_nnode **stack_a);
-void    	radix(t_nnode **stack_a, t_nnode **stack_b, long bits);
+void		showindex(t_nnode **stack_a);
+void		radix(t_nnode **stack_a, t_nnode **stack_b, long bits);
 void		sa(t_nnode **stack_a);
 void		ra(t_nnode **stack_a);
 void		rra(t_nnode **stack_a);
-void    	pa(t_nnode **stack_a, t_nnode **stack_b);
-void    	pb(t_nnode **stack_a, t_nnode **stack_b);
-void    	hardcodeme(t_nnode **stack_a, t_nnode **stack_b);
+void		pa(t_nnode **stack_a, t_nnode **stack_b);
+void		pb(t_nnode **stack_a, t_nnode **stack_b);
+void		hardcodeme(t_nnode **stack_a, t_nnode **stack_b);
 
 #endif

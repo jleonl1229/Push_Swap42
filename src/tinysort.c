@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static void threesort(t_nnode **stack_a)
+static void	threesort(t_nnode **stack_a)
 {
-    long	first;
+	long	first;
 	long	second;
 	long	third;
 
@@ -27,11 +27,14 @@ static void threesort(t_nnode **stack_a)
 		ra(stack_a);
 	else if ((first < second) && (first > third) && (second > third))
 		rra(stack_a);
-    else
-		sa(stack_a), threesort(stack_a);
+	else
+	{
+		sa(stack_a);
+		threesort(stack_a);
+	}
 }
 
-static void foursort(t_nnode **stack_a, t_nnode **stack_b)
+static void	foursort(t_nnode **stack_a, t_nnode **stack_b)
 {
 	while ((*stack_a)->index != 1)
 		ra(stack_a);
@@ -40,27 +43,27 @@ static void foursort(t_nnode **stack_a, t_nnode **stack_b)
 	pa(stack_a, stack_b);
 }
 
-static void fivesort(t_nnode **stack_a, t_nnode **stack_b)
+static void	fivesort(t_nnode **stack_a, t_nnode **stack_b)
 {
-    while ((*stack_a)->index != 1)
+	while ((*stack_a)->index != 1)
 		ra(stack_a);
-    pb(stack_a, stack_b);
-    while ((*stack_a)->index != 2)
+	pb(stack_a, stack_b);
+	while ((*stack_a)->index != 2)
 		ra(stack_a);
-    pb(stack_a, stack_b);
-    threesort(stack_a);
-    pa(stack_a, stack_b);
-    pa(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	threesort(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
 }
 
-void    hardcodeme(t_nnode **stack_a, t_nnode **stack_b)
+void	hardcodeme(t_nnode **stack_a, t_nnode **stack_b)
 {
-    if (countelements(*stack_a) == 2)
-        sa(stack_a);
-    else if (countelements(*stack_a) == 3)
-        threesort(stack_a);
-    else if (countelements(*stack_a) == 4)
-        foursort(stack_a, stack_b);
-    else if (countelements(*stack_a) == 5)
-        fivesort(stack_a, stack_b);
+	if (countelements(*stack_a) == 2)
+		sa(stack_a);
+	else if (countelements(*stack_a) == 3)
+		threesort(stack_a);
+	else if (countelements(*stack_a) == 4)
+		foursort(stack_a, stack_b);
+	else if (countelements(*stack_a) == 5)
+		fivesort(stack_a, stack_b);
 }
