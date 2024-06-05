@@ -14,7 +14,7 @@
 
 void	decision(t_nnode **stack_a, t_nnode **stack_b)
 {
-	getindex(stack_a);	
+	getindex(stack_a);
 	if (countelements(*stack_a) <= 5)
 	{
 		if (sorted(stack_a) == 0)

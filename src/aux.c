@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void freeme(char **spliter)
+void	freeme(char **spliter)
 {
 	long	i;
 
@@ -29,16 +29,16 @@ void freeme(char **spliter)
 
 void	printnums(t_nnode *stack_a)
 {
-	t_nnode *copy;
+	t_nnode	*copy;
 
-    copy = stack_a;
+	copy = stack_a;
 	if (copy != (void *)0)
 	{
 		while (copy != (void *)0)
 		{
 			ft_printf("Num of the node: %l\n", copy->num);
 			copy = copy->next;
-		}	
+		}
 	}
 }
 
@@ -68,7 +68,10 @@ long	countelements(t_nnode *stack_a)
 	{
 		i++;
 		if (tmp->num < -2147483648 || tmp->num > 2147483647)
-			ft_printf("Error\n"), exit(1);
+		{
+			ft_printf("Error\n");
+			exit(1);
+		}
 		tmp = tmp->next;
 	}
 	return (i);
@@ -84,11 +87,11 @@ long	ft_atol(const char *str)
 	sign = 1;
 	num = 0;
 	if (str[0] == '\0')
-		ft_printf("Error\n"), exit(1);
+		return (ft_printf("Error\n"), exit(1), 1);
 	if ((str[i] == '+') || (str[i] == '-'))
 	{
 		if (str[i + 1] == '\0')
-			ft_printf("Error\n"), exit(1);
+			return (ft_printf("Error\n"), exit(1), 1);
 		if (str[i] == '-')
 			sign = -1;
 		i++;

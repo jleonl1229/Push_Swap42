@@ -61,10 +61,10 @@ void	chargelongs(t_nnode **stack_a, long *count, long size)
 
 static long	numcheck(char **num, long *i, long *ii)
 {
-	while (num[*i][*ii] == ' ' || 
+	while (num[*i][*ii] == ' ' ||
 		(num[*i][*ii] >= 9 && num[*i][*ii] <= 13))
 		(*ii)++;
-	if (num[*i][*ii] == '-' || num[*i][*ii] == '+' || 
+	if (num[*i][*ii] == '-' || num[*i][*ii] == '+' ||
 		(num[*i][*ii] >= '0' && num[*i][*ii] <= '9'))
 	{
 		(*ii)++;
@@ -117,6 +117,9 @@ void	get_numbers(t_nnode **stack_a, char **numarr, long flag)
 	if (!count)
 		return ;
 	while (ii < i)
-		count[ii] = ft_atol(numarr[ii]), ii++;
+	{
+		count[ii] = ft_atol(numarr[ii]);
+		ii++;
+	}
 	chargelongs(stack_a, count, i);
 }
