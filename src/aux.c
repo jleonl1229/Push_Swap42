@@ -83,6 +83,8 @@ long	ft_atol(const char *str)
 	i = 0;
 	sign = 1;
 	num = 0;
+	if (str[0] == '\0')
+		ft_printf("Error\n"), exit(1);
 	if ((str[i] == '+') || (str[i] == '-'))
 	{
 		if (str[i + 1] == '\0')

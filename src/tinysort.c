@@ -33,47 +33,24 @@ static void threesort(t_nnode **stack_a)
 
 static void foursort(t_nnode **stack_a, t_nnode **stack_b)
 {
-    t_nnode *tmp;
-
-	tmp = *stack_a;
-	while (tmp)
-	{
-		if (tmp->next && tmp->next->index == 1)
-		{
-			*stack_b = tmp->next;
-			tmp->next = tmp->next->next;
-		}
-		tmp = tmp->next;
-	}
-	(*stack_b)->next = (void *)0;
+	while ((*stack_a)->index != 1)
+		ra(stack_a);
+	pb(stack_a, stack_b);
 	threesort(stack_a);
 	pa(stack_a, stack_b);
 }
 
 static void fivesort(t_nnode **stack_a, t_nnode **stack_b)
 {
-    t_nnode *tmp;
-    t_nnode *next_node;
-    t_nnode *insert_node;
-
-    tmp = *stack_a;
-    while (tmp && tmp->next)
-    {
-        if (tmp->next->index == 1 || tmp->next->index == 2)
-            next_node = tmp->next, tmp->next = next_node->next, 
-            	next_node->next = *stack_b, *stack_b = next_node;
-        else
-            tmp = tmp->next;
-    }
-    if ((*stack_a)->index == 1 || (*stack_a)->index == 2)
-        next_node = *stack_a, *stack_a = next_node->next, 
-        	next_node->next = *stack_b, *stack_b = next_node;
+    while ((*stack_a)->index != 1)
+		ra(stack_a);
+    pb(stack_a, stack_b);
+    while ((*stack_a)->index != 2)
+		ra(stack_a);
+    pb(stack_a, stack_b);
     threesort(stack_a);
-    if (sorted(stack_b) == 1)
-        sa(stack_b);
-    while (*stack_b)
-        insert_node = *stack_b, *stack_b = (*stack_b)->next, 
-        	insert_node->next = *stack_a, *stack_a = insert_node;
+    pa(stack_a, stack_b);
+    pa(stack_a, stack_b);
 }
 
 void    hardcodeme(t_nnode **stack_a, t_nnode **stack_b)

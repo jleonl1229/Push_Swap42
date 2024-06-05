@@ -31,7 +31,7 @@ typedef struct s_nnode
 long		ft_atol(const char *str);
 void		freeme(char **spliter);
 void		cleaner(t_nnode **lst);
-void		get_numbers(t_nnode **stack_a, char **numarr);
+void		get_numbers(t_nnode **stack_a, char **numarr, long flag);
 void		chargelongs(t_nnode **stack_a, long *count, long size);
 void		printnums(t_nnode *stack_a);
 long		countelements(t_nnode *stack_a);

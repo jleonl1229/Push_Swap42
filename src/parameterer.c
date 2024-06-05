@@ -96,7 +96,7 @@ long	ft_isnum(char **numarr)
 	return (1);
 }
 
-void	get_numbers(t_nnode **stack_a, char **numarr)
+void	get_numbers(t_nnode **stack_a, char **numarr, long flag)
 {
 	long	i;
 	long	ii;
@@ -107,6 +107,8 @@ void	get_numbers(t_nnode **stack_a, char **numarr)
 	if (!numarr[i] || !stack_a || ft_isnum(numarr) == 0)
 	{
 		ft_printf("Error\n");
+		if (flag == 2)
+			freeme(numarr);
 		exit(1);
 	}
 	while (numarr[i] != (void *)0)
@@ -115,9 +117,6 @@ void	get_numbers(t_nnode **stack_a, char **numarr)
 	if (!count)
 		return ;
 	while (ii < i)
-	{
-		count[ii] = ft_atol(numarr[ii]);
-		ii++;
-	}
+		count[ii] = ft_atol(numarr[ii]), ii++;
 	chargelongs(stack_a, count, i);
 }
